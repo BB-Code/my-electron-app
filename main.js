@@ -2,19 +2,44 @@
  * @Author: bobocde
  * @Description: 
  */
+/*
+ * @Author: bobocde
+ * @Description: 
+ */
 const { app, BrowserWindow } = require('electron');
+const isDev = require('electron-is-dev');
+const ipcMain = require('electron').ipcMain;
 function createWindow() {
     const win = new BrowserWindow({
-        width: 300,
-        height: 300,
+        width: 800,
+        height: 600,
         webPreferences: {
-            nodeIntegration: true
+            nodeIntegration: true,
+            enableRemoteModule: true,
+            //webSecurity: false
         }
     });
-    console.log('开始加载页面');
-    win.loadFile('index.html');
+    if (isDev) {
+        win.loadURL('http://localhost:3000')
+    } else {
+        win.loadFile('index.html');
+    }
     console.log('打开调式');
     win.webContents.openDevTools();
+    ipcMain.on('message', (event, arg) => {
+        console.log(event);
+        console.log(arg);
+        event.reply('result', 'hello')
+    })
+    // const winChild = new BrowserWindow({
+    //     width: 300,
+    //     height: 300,
+    //     webPreferences: {
+    //         nodeIntegration: true
+    //     },
+    //     parent: win,
+    // });
+    // winChild.loadFile('second.html');
 
 }
 
