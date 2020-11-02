@@ -1,0 +1,17 @@
+{
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "nodemon --watch main.js index.html --exec  \"electron .\" ",
+    "pack": "electron-packager ./ --win  --out ./ --arch=x64 --app-version=1.0.0 --electron-version=10.1.5  --icon=./test.ico"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^10.1.5"
+  }
+}
