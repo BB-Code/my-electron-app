@@ -1,11 +1,3 @@
-/*
- * @Author: bobocde
- * @Description: 
- */
-/*
- * @Author: bobocde
- * @Description: 
- */
 const { app, BrowserWindow } = require('electron');
 const isDev = require('electron-is-dev');
 const ipcMain = require('electron').ipcMain;
@@ -20,7 +12,7 @@ function createWindow() {
         }
     });
     if (isDev) {
-        win.loadURL('http://localhost:3000')
+        win.loadURL('http://localhost:3000/home/1')
     } else {
         win.loadFile('index.html');
     }
